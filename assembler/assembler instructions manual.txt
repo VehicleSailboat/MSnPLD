@@ -1,0 +1,80 @@
+//data input codes len=1 format=command
+
+		000 A 3210 RLS3210 MP w adr000
+DI		000 1 0001 00 0000 00 0 000000
+ 
+ /m2r
+
+RgA		000 0 0001 00 0000 00 0
+RgB		000 0 0110 00 0000 00 0
+Rg2		000 0 0111 00 0000 00 0
+		000 				    
+//ALU to   memo yr  cod es   
+//len=2                      
+//format = comm na d ad dr e ss
+						    
+logic	000 Av3210 RLS3210 MP w adr
+
+zero	000 0 0000 00 1100 00 1 adr
+lA		000 0 0000 00 0000 00 1 adr
+lB		000 0 0000 00 0101 00 1 adr
+lnA		000 0 0000 00 1111 00 1 adr
+lnB		000 0 0000 00 1010 00 1 adr
+OR		000 0 0000 00 0001 00 1 adr
+ORNO	000 0 0000 00 0010 00 1 adr
+NOOR	000 0 0000 00 0111 00 1 adr
+NOR		000 0 0000 00 1110 00 1 adr
+AND		000 0 0000 00 0100 00 1 adr
+ANDNO	000 0 0000 00 1000 00 1 adr
+NOAND	000 0 0000 00 1101 00 1 adr
+NAND	000 0 0000 00 1011 00 1 adr
+XOR		000 0 0000 00 1001 00 1 adr
+XORNO	000 0 0000 00 0110 00 1 adr
+
+ariph	000 Av3210 RLS3210 MP w adr
+
+A1		000 0 0000 00 0000 11 1 adr
+Am1		000 0 0000 00 1111 10 1 adr
+ApB		000 0 0000 00 1001 10 1 adr
+AmB		000 0 0000 00 0110 11 1 adr
+AmBm1	000 0 0000 00 0110 10 1 adr
+OR1		000 0 0000 00 0001 11 1 adr
+ORNO1	000 0 0000 00 0010 11 1 adr
+ANDNOm1	000 0 0000 00 0111 10 1 adr
+NANDm1	000 0 0000 00 1011 10 1 adr
+ANpA	000 0 0000 00 0100 10 1 adr
+ANpA1	000 0 0000 00 0100 11 1 adr
+ANDpA	000 0 0000 00 1000 10 1 adr
+ANDpA1	000 0 0000 00 1000 11 1 adr
+ApOR	000 0 0000 00 1101 10 1 adr
+ApOR	000 0 0000 00 1101 11 1 adr
+ApON	000 0 0000 00 1110 10 1 adr
+ApON1	000 0 0000 00 1110 11 1 adr
+ANpOR	000 0 0000 00 0101 10 1 adr
+ANpOR1	000 0 0000 00 0101 11 1 adr
+ANDpON	000 0 0000 00 1010 10 1 adr
+ANDpON1	000 0 0000 00 1010 11 1 adr
+
+//SHIFT c odes    
+//len=1           
+//format= comm na d
+codes	A 3210 RL 3210MPwadr
+ShL		0 0010 00 0000000000
+ShR		0 0100 00 0000000000
+
+// if codes 
+//len=4 
+//format=command src1(reg/int) src2(reg) address
+bne 001 
+bgt 010
+blt 011
+beq 111
+bge 101
+ble 110
+
+result of ifcode:
+DI/lA
+lB
+A-B
+comparison instruction
+

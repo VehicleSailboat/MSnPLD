@@ -1,0 +1,7 @@
+bne
+bgt
+blt
+beq
+bge
+ble
+jump
