@@ -1,7 +1,7 @@
 module RALU (
 	input clk,reset,
 	input [3:0] DataIn,
-	output reg [3:0] Rout,
+	output [3:0] Rout,
 	
 //АЛУ	
 	input [3:0] S,
@@ -53,12 +53,12 @@ begin
 end
 //описание работы РОН
 
-/*wire [3:0] shitout=RAM_data[adr]; //тестовый сигнал, не обращаем внимания*/
+wire [3:0] shitout=RAM_data[adr]; //тестовый сигнал, не обращаем внимания*/
 
-//описание мультиплексора
+/*//описание мультиплексора
 wire [3:0] MS_output;
 assign MS_output=A?(DataIn):(RAM_data[adr]);
-//описание мультиплексора
+//описание мультиплексора*/
 
 reg [3:0] RgA,RgB; //введение регистров А,В
 
@@ -71,7 +71,7 @@ begin
 		end
 	else
 		begin
-			if(v[0]) RgA <= MS_output;
+			if(v[0]) RgA <= A?(DataIn):(RAM_data[adr]);
 		end
 end
 //описание регистра А
@@ -100,17 +100,21 @@ end
 //описание регистра В
 
 //AC
+
+reg [3:0] Rbuf;
 always @(posedge clk)
 begin
 	if(reset) 
 		begin
-			Rout=0;
+			Rbuf=0;
 		end
 	else
 		begin
-			if(v[3]) Rout <= R;
+			if(v[3]) Rbuf <= R;
 		end
 end
+
+assign Rout=v[3]? R : Rbuf;
 //AC
 
 endmodule
